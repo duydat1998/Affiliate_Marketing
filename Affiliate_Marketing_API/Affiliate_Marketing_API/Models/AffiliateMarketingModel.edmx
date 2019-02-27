@@ -1,0 +1,264 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AffiliateMarketingDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Advertiser">
+          <Key>
+            <PropertyRef Name="advertiserID" />
+          </Key>
+          <Property Name="advertiserID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="advertiserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="phone" Type="nvarchar" MaxLength="11" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" />
+          <Property Name="address" Type="nvarchar(max)" />
+          <Property Name="website" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Campaign">
+          <Key>
+            <PropertyRef Name="campaignID" />
+          </Key>
+          <Property Name="campaignID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="campaignName" Type="nvarchar" MaxLength="50" />
+          <Property Name="banner" Type="nvarchar(max)" />
+          <Property Name="campaignContent" Type="nvarchar(max)" />
+          <Property Name="advertiserID" Type="nvarchar" MaxLength="50" />
+          <Property Name="startDate" Type="date" />
+          <Property Name="endDate" Type="date" />
+          <Property Name="percentDiscount" Type="float" />
+          <Property Name="minBill" Type="float" />
+          <Property Name="maxAmountDiscount" Type="float" />
+          <Property Name="percentComission" Type="float" />
+          <Property Name="isWorking" Type="bit" />
+        </EntityType>
+        <EntityType Name="CampaignRegistration">
+          <Key>
+            <PropertyRef Name="campaignID" />
+            <PropertyRef Name="publisherID" />
+          </Key>
+          <Property Name="campaignID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="publisherID" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="promotionCode" Type="nchar" MaxLength="15" />
+          <Property Name="registerDate" Type="date" />
+        </EntityType>
+        <EntityType Name="PromotionCode">
+          <Key>
+            <PropertyRef Name="promotionCode" />
+          </Key>
+          <Property Name="promotionCode" Type="nchar" MaxLength="15" Nullable="false" />
+          <Property Name="percentEarn" Type="float" />
+          <Property Name="isWorking" Type="bit" />
+        </EntityType>
+        <EntityType Name="PromotionCodeTracking">
+          <Key>
+            <PropertyRef Name="trackingId" />
+          </Key>
+          <Property Name="trackingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="promotionCode" Type="nchar" MaxLength="15" Nullable="false" />
+          <Property Name="timeOfUsing" Type="datetime" Nullable="false" />
+          <Property Name="totalAmoutOfOrder" Type="float" Nullable="false" />
+          <Property Name="moneyEarned" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Publisher">
+          <Key>
+            <PropertyRef Name="publisherID" />
+          </Key>
+          <Property Name="publisherID" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="50" />
+          <Property Name="lastname" Type="nvarchar" MaxLength="50" />
+          <Property Name="firstname" Type="nvarchar" MaxLength="50" />
+          <Property Name="phone" Type="nvarchar" MaxLength="15" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="AffiliateMarketingDBModelStoreContainer">
+          <EntitySet Name="Advertiser" EntityType="Self.Advertiser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Campaign" EntityType="Self.Campaign" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CampaignRegistration" EntityType="Self.CampaignRegistration" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PromotionCode" EntityType="Self.PromotionCode" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PromotionCodeTracking" EntityType="Self.PromotionCodeTracking" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Publisher" EntityType="Self.Publisher" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AffiliateMarketingDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Advertiser">
+          <Key>
+            <PropertyRef Name="advertiserID" />
+          </Key>
+          <Property Name="advertiserID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="advertiserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="phone" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="website" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Campaign">
+          <Key>
+            <PropertyRef Name="campaignID" />
+          </Key>
+          <Property Name="campaignID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="campaignName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="banner" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="campaignContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="advertiserID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="startDate" Type="DateTime" Precision="0" />
+          <Property Name="endDate" Type="DateTime" Precision="0" />
+          <Property Name="percentDiscount" Type="Double" />
+          <Property Name="minBill" Type="Double" />
+          <Property Name="maxAmountDiscount" Type="Double" />
+          <Property Name="percentComission" Type="Double" />
+          <Property Name="isWorking" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="CampaignRegistration">
+          <Key>
+            <PropertyRef Name="campaignID" />
+            <PropertyRef Name="publisherID" />
+          </Key>
+          <Property Name="campaignID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="publisherID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="promotionCode" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="registerDate" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="PromotionCode">
+          <Key>
+            <PropertyRef Name="promotionCode1" />
+          </Key>
+          <Property Name="promotionCode1" Type="String" MaxLength="15" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="percentEarn" Type="Double" />
+          <Property Name="isWorking" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="PromotionCodeTracking">
+          <Key>
+            <PropertyRef Name="trackingId" />
+          </Key>
+          <Property Name="trackingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="promotionCode" Type="String" MaxLength="15" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="timeOfUsing" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="totalAmoutOfOrder" Type="Double" Nullable="false" />
+          <Property Name="moneyEarned" Type="Double" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Publisher">
+          <Key>
+            <PropertyRef Name="publisherID" />
+          </Key>
+          <Property Name="publisherID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="firstname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="AffiliateMarketingDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Advertisers" EntityType="Self.Advertiser" />
+          <EntitySet Name="Campaigns" EntityType="Self.Campaign" />
+          <EntitySet Name="CampaignRegistrations" EntityType="Self.CampaignRegistration" />
+          <EntitySet Name="PromotionCodes" EntityType="Self.PromotionCode" />
+          <EntitySet Name="PromotionCodeTrackings" EntityType="Self.PromotionCodeTracking" />
+          <EntitySet Name="Publishers" EntityType="Self.Publisher" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AffiliateMarketingDBModelStoreContainer" CdmEntityContainer="AffiliateMarketingDBEntities">
+          <EntitySetMapping Name="Advertisers">
+            <EntityTypeMapping TypeName="AffiliateMarketingDBModel.Advertiser">
+              <MappingFragment StoreEntitySet="Advertiser">
+                <ScalarProperty Name="advertiserID" ColumnName="advertiserID" />
+                <ScalarProperty Name="advertiserName" ColumnName="advertiserName" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="website" ColumnName="website" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Campaigns">
+            <EntityTypeMapping TypeName="AffiliateMarketingDBModel.Campaign">
+              <MappingFragment StoreEntitySet="Campaign">
+                <ScalarProperty Name="campaignID" ColumnName="campaignID" />
+                <ScalarProperty Name="campaignName" ColumnName="campaignName" />
+                <ScalarProperty Name="banner" ColumnName="banner" />
+                <ScalarProperty Name="campaignContent" ColumnName="campaignContent" />
+                <ScalarProperty Name="advertiserID" ColumnName="advertiserID" />
+                <ScalarProperty Name="startDate" ColumnName="startDate" />
+                <ScalarProperty Name="endDate" ColumnName="endDate" />
+                <ScalarProperty Name="percentDiscount" ColumnName="percentDiscount" />
+                <ScalarProperty Name="minBill" ColumnName="minBill" />
+                <ScalarProperty Name="maxAmountDiscount" ColumnName="maxAmountDiscount" />
+                <ScalarProperty Name="percentComission" ColumnName="percentComission" />
+                <ScalarProperty Name="isWorking" ColumnName="isWorking" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CampaignRegistrations">
+            <EntityTypeMapping TypeName="AffiliateMarketingDBModel.CampaignRegistration">
+              <MappingFragment StoreEntitySet="CampaignRegistration">
+                <ScalarProperty Name="campaignID" ColumnName="campaignID" />
+                <ScalarProperty Name="publisherID" ColumnName="publisherID" />
+                <ScalarProperty Name="promotionCode" ColumnName="promotionCode" />
+                <ScalarProperty Name="registerDate" ColumnName="registerDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PromotionCodes">
+            <EntityTypeMapping TypeName="AffiliateMarketingDBModel.PromotionCode">
+              <MappingFragment StoreEntitySet="PromotionCode">
+                <ScalarProperty Name="promotionCode1" ColumnName="promotionCode" />
+                <ScalarProperty Name="percentEarn" ColumnName="percentEarn" />
+                <ScalarProperty Name="isWorking" ColumnName="isWorking" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PromotionCodeTrackings">
+            <EntityTypeMapping TypeName="AffiliateMarketingDBModel.PromotionCodeTracking">
+              <MappingFragment StoreEntitySet="PromotionCodeTracking">
+                <ScalarProperty Name="trackingId" ColumnName="trackingId" />
+                <ScalarProperty Name="promotionCode" ColumnName="promotionCode" />
+                <ScalarProperty Name="timeOfUsing" ColumnName="timeOfUsing" />
+                <ScalarProperty Name="totalAmoutOfOrder" ColumnName="totalAmoutOfOrder" />
+                <ScalarProperty Name="moneyEarned" ColumnName="moneyEarned" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Publishers">
+            <EntityTypeMapping TypeName="AffiliateMarketingDBModel.Publisher">
+              <MappingFragment StoreEntitySet="Publisher">
+                <ScalarProperty Name="publisherID" ColumnName="publisherID" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="lastname" ColumnName="lastname" />
+                <ScalarProperty Name="firstname" ColumnName="firstname" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="false" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

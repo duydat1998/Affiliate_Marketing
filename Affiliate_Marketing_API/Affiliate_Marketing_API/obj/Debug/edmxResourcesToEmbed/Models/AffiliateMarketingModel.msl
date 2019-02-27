@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AffiliateMarketingDBModelStoreContainer" CdmEntityContainer="AffiliateMarketingDBEntities">
+    <EntitySetMapping Name="Advertisers">
+      <EntityTypeMapping TypeName="AffiliateMarketingDBModel.Advertiser">
+        <MappingFragment StoreEntitySet="Advertiser">
+          <ScalarProperty Name="advertiserID" ColumnName="advertiserID" />
+          <ScalarProperty Name="advertiserName" ColumnName="advertiserName" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="website" ColumnName="website" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Campaigns">
+      <EntityTypeMapping TypeName="AffiliateMarketingDBModel.Campaign">
+        <MappingFragment StoreEntitySet="Campaign">
+          <ScalarProperty Name="campaignID" ColumnName="campaignID" />
+          <ScalarProperty Name="campaignName" ColumnName="campaignName" />
+          <ScalarProperty Name="banner" ColumnName="banner" />
+          <ScalarProperty Name="campaignContent" ColumnName="campaignContent" />
+          <ScalarProperty Name="advertiserID" ColumnName="advertiserID" />
+          <ScalarProperty Name="startDate" ColumnName="startDate" />
+          <ScalarProperty Name="endDate" ColumnName="endDate" />
+          <ScalarProperty Name="percentDiscount" ColumnName="percentDiscount" />
+          <ScalarProperty Name="minBill" ColumnName="minBill" />
+          <ScalarProperty Name="maxAmountDiscount" ColumnName="maxAmountDiscount" />
+          <ScalarProperty Name="percentComission" ColumnName="percentComission" />
+          <ScalarProperty Name="isWorking" ColumnName="isWorking" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CampaignRegistrations">
+      <EntityTypeMapping TypeName="AffiliateMarketingDBModel.CampaignRegistration">
+        <MappingFragment StoreEntitySet="CampaignRegistration">
+          <ScalarProperty Name="campaignID" ColumnName="campaignID" />
+          <ScalarProperty Name="publisherID" ColumnName="publisherID" />
+          <ScalarProperty Name="promotionCode" ColumnName="promotionCode" />
+          <ScalarProperty Name="registerDate" ColumnName="registerDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PromotionCodes">
+      <EntityTypeMapping TypeName="AffiliateMarketingDBModel.PromotionCode">
+        <MappingFragment StoreEntitySet="PromotionCode">
+          <ScalarProperty Name="promotionCode1" ColumnName="promotionCode" />
+          <ScalarProperty Name="percentEarn" ColumnName="percentEarn" />
+          <ScalarProperty Name="isWorking" ColumnName="isWorking" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PromotionCodeTrackings">
+      <EntityTypeMapping TypeName="AffiliateMarketingDBModel.PromotionCodeTracking">
+        <MappingFragment StoreEntitySet="PromotionCodeTracking">
+          <ScalarProperty Name="trackingId" ColumnName="trackingId" />
+          <ScalarProperty Name="promotionCode" ColumnName="promotionCode" />
+          <ScalarProperty Name="timeOfUsing" ColumnName="timeOfUsing" />
+          <ScalarProperty Name="totalAmoutOfOrder" ColumnName="totalAmoutOfOrder" />
+          <ScalarProperty Name="moneyEarned" ColumnName="moneyEarned" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Publishers">
+      <EntityTypeMapping TypeName="AffiliateMarketingDBModel.Publisher">
+        <MappingFragment StoreEntitySet="Publisher">
+          <ScalarProperty Name="publisherID" ColumnName="publisherID" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="lastname" ColumnName="lastname" />
+          <ScalarProperty Name="firstname" ColumnName="firstname" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="email" ColumnName="email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

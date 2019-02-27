@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AffiliateMarketingDBModel1StoreContainer" CdmEntityContainer="AffiliateMarketingDBEntities1">
+    <EntitySetMapping Name="Advertisers">
+      <EntityTypeMapping TypeName="AffiliateMarketingDBModel1.Advertiser">
+        <MappingFragment StoreEntitySet="Advertiser">
+          <ScalarProperty Name="advertiserID" ColumnName="advertiserID" />
+          <ScalarProperty Name="advertiserName" ColumnName="advertiserName" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="website" ColumnName="website" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Campaigns">
+      <EntityTypeMapping TypeName="AffiliateMarketingDBModel1.Campaign">
+        <MappingFragment StoreEntitySet="Campaign">
+          <ScalarProperty Name="campaignID" ColumnName="campaignID" />
+          <ScalarProperty Name="campaignName" ColumnName="campaignName" />
+          <ScalarProperty Name="banner" ColumnName="banner" />
+          <ScalarProperty Name="campaignContent" ColumnName="campaignContent" />
+          <ScalarProperty Name="advertiserID" ColumnName="advertiserID" />
+          <ScalarProperty Name="startDate" ColumnName="startDate" />
+          <ScalarProperty Name="endDate" ColumnName="endDate" />
+          <ScalarProperty Name="isWorking" ColumnName="isWorking" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CampaignRegistrations">
+      <EntityTypeMapping TypeName="AffiliateMarketingDBModel1.CampaignRegistration">
+        <MappingFragment StoreEntitySet="CampaignRegistration">
+          <ScalarProperty Name="campaignID" ColumnName="campaignID" />
+          <ScalarProperty Name="publisherID" ColumnName="publisherID" />
+          <ScalarProperty Name="promotionCode" ColumnName="promotionCode" />
+          <ScalarProperty Name="registerDate" ColumnName="registerDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PromotionCodes">
+      <EntityTypeMapping TypeName="AffiliateMarketingDBModel1.PromotionCode">
+        <MappingFragment StoreEntitySet="PromotionCode">
+          <ScalarProperty Name="promotionCode1" ColumnName="promotionCode" />
+          <ScalarProperty Name="discount" ColumnName="discount" />
+          <ScalarProperty Name="maxDiscount" ColumnName="maxDiscount" />
+          <ScalarProperty Name="minTotal" ColumnName="minTotal" />
+          <ScalarProperty Name="isWorking" ColumnName="isWorking" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PromotionCodeTrackings">
+      <EntityTypeMapping TypeName="AffiliateMarketingDBModel1.PromotionCodeTracking">
+        <MappingFragment StoreEntitySet="PromotionCodeTracking">
+          <ScalarProperty Name="trackingId" ColumnName="trackingId" />
+          <ScalarProperty Name="promotionCode" ColumnName="promotionCode" />
+          <ScalarProperty Name="timeUsed" ColumnName="timeUsed" />
+          <ScalarProperty Name="totalAmoutOfOrder" ColumnName="totalAmoutOfOrder" />
+          <ScalarProperty Name="moneyEarned" ColumnName="moneyEarned" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Publishers">
+      <EntityTypeMapping TypeName="AffiliateMarketingDBModel1.Publisher">
+        <MappingFragment StoreEntitySet="Publisher">
+          <ScalarProperty Name="publisherID" ColumnName="publisherID" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="lastname" ColumnName="lastname" />
+          <ScalarProperty Name="firstname" ColumnName="firstname" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="email" ColumnName="email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="AffiliateMarketingDBModel1.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

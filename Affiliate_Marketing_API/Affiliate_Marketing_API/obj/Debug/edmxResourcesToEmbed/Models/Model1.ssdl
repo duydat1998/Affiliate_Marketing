@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AffiliateMarketingDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Advertiser">
+    <Key>
+      <PropertyRef Name="advertiserID" />
+    </Key>
+    <Property Name="advertiserID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="advertiserName" Type="nvarchar" MaxLength="50" />
+    <Property Name="phone" Type="nvarchar" MaxLength="11" />
+    <Property Name="email" Type="nvarchar" MaxLength="50" />
+    <Property Name="address" Type="nvarchar(max)" />
+    <Property Name="website" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Campaign">
+    <Key>
+      <PropertyRef Name="campaignID" />
+    </Key>
+    <Property Name="campaignID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="campaignName" Type="nvarchar" MaxLength="50" />
+    <Property Name="banner" Type="nvarchar(max)" />
+    <Property Name="campaignContent" Type="nvarchar(max)" />
+    <Property Name="advertiserID" Type="nvarchar" MaxLength="50" />
+    <Property Name="startDate" Type="date" />
+    <Property Name="endDate" Type="date" />
+    <Property Name="isWorking" Type="bit" />
+  </EntityType>
+  <EntityType Name="CampaignRegistration">
+    <Key>
+      <PropertyRef Name="campaignID" />
+      <PropertyRef Name="publisherID" />
+    </Key>
+    <Property Name="campaignID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="publisherID" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="promotionCode" Type="nchar" MaxLength="15" />
+    <Property Name="registerDate" Type="date" />
+  </EntityType>
+  <EntityType Name="PromotionCode">
+    <Key>
+      <PropertyRef Name="promotionCode" />
+    </Key>
+    <Property Name="promotionCode" Type="nchar" MaxLength="15" Nullable="false" />
+    <Property Name="discount" Type="int" />
+    <Property Name="maxDiscount" Type="int" />
+    <Property Name="minTotal" Type="int" />
+    <Property Name="isWorking" Type="bit" />
+  </EntityType>
+  <EntityType Name="PromotionCodeTracking">
+    <Key>
+      <PropertyRef Name="trackingId" />
+    </Key>
+    <Property Name="trackingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="promotionCode" Type="nchar" MaxLength="15" />
+    <Property Name="timeUsed" Type="datetime" />
+    <Property Name="totalAmoutOfOrder" Type="float" />
+    <Property Name="moneyEarned" Type="float" />
+  </EntityType>
+  <EntityType Name="Publisher">
+    <Key>
+      <PropertyRef Name="publisherID" />
+    </Key>
+    <Property Name="publisherID" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="password" Type="nvarchar" MaxLength="50" />
+    <Property Name="lastname" Type="nvarchar" MaxLength="50" />
+    <Property Name="firstname" Type="nvarchar" MaxLength="50" />
+    <Property Name="phone" Type="nvarchar" MaxLength="15" />
+    <Property Name="email" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_CampaignRegistration_Campaign">
+    <End Role="Campaign" Type="Self.Campaign" Multiplicity="1" />
+    <End Role="CampaignRegistration" Type="Self.CampaignRegistration" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Campaign">
+        <PropertyRef Name="campaignID" />
+      </Principal>
+      <Dependent Role="CampaignRegistration">
+        <PropertyRef Name="campaignID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CampaignRegistration_Publisher">
+    <End Role="Publisher" Type="Self.Publisher" Multiplicity="1" />
+    <End Role="CampaignRegistration" Type="Self.CampaignRegistration" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Publisher">
+        <PropertyRef Name="publisherID" />
+      </Principal>
+      <Dependent Role="CampaignRegistration">
+        <PropertyRef Name="publisherID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="AffiliateMarketingDBModelStoreContainer">
+    <EntitySet Name="Advertiser" EntityType="Self.Advertiser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Campaign" EntityType="Self.Campaign" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CampaignRegistration" EntityType="Self.CampaignRegistration" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PromotionCode" EntityType="Self.PromotionCode" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PromotionCodeTracking" EntityType="Self.PromotionCodeTracking" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Publisher" EntityType="Self.Publisher" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_CampaignRegistration_Campaign" Association="Self.FK_CampaignRegistration_Campaign">
+      <End Role="Campaign" EntitySet="Campaign" />
+      <End Role="CampaignRegistration" EntitySet="CampaignRegistration" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CampaignRegistration_Publisher" Association="Self.FK_CampaignRegistration_Publisher">
+      <End Role="Publisher" EntitySet="Publisher" />
+      <End Role="CampaignRegistration" EntitySet="CampaignRegistration" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
