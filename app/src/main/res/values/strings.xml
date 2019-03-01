@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">Affiliate Marketing</string>
-    <string name="title_activity_splash_screen">SplashScreenActivity</string>
+    <string name="title_activity_splash_screen">Affiliate Marketing</string>
+    <string name="home_api">http://192.168.8.101/affiliatemarketing/</string>
+    <string name="school_api">http://10.82.140.150/affiliatemarketing/</string>
+    <string name="title_home">Home</string>
+    <string name="title_report">Report</string>
+    <string name="title_profile">Profile</string>
+    <string name="title_activity_main">MainActivity</string>
+
 </resources>
