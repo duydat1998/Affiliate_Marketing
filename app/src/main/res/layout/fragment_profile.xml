@@ -25,19 +25,27 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/txtUsername" />
+            android:id="@+id/txtUsername"
+            android:layout_marginTop="10dp"
+            android:textSize="18dp"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/txtName"/>
+            android:id="@+id/txtName"
+            android:layout_marginTop="10dp"
+            android:textSize="18dp"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/txtPhone"/>
+            android:id="@+id/txtPhone"
+            android:layout_marginTop="10dp"
+            android:textSize="18dp"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/txtEmail"/>
+            android:id="@+id/txtEmail"
+            android:layout_marginTop="10dp"
+            android:textSize="18dp"/>
         
 
     </LinearLayout>
