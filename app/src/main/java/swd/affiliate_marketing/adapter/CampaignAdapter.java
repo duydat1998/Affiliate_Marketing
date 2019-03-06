@@ -16,12 +16,18 @@ import swd.affiliate_marketing.R;
 import swd.affiliate_marketing.model.Campaign;
 
 public class CampaignAdapter extends RecyclerView.Adapter<CampaignAdapter.CampaignItemViewHolder> {
+    public interface OnItemClickListener {
+        void onItemClick(Campaign item);
+    }
+
     private List<Campaign> campaigns;
     private Context context;
+    private final OnItemClickListener listener;
 
-    public CampaignAdapter(List<Campaign> campaigns, Context context){
+    public CampaignAdapter(List<Campaign> campaigns, Context context, OnItemClickListener listener){
         this.campaigns = campaigns;
         this.context = context;
+        this.listener = listener;
     }
 
     @Override
@@ -38,10 +44,11 @@ public class CampaignAdapter extends RecyclerView.Adapter<CampaignAdapter.Campai
                 .load(campaign.banner).into(view.ivBanner);
         view.tvCampaignName.setText(campaign.campaignName);
         view.tvAdvertiserName.setText(campaign.advertiserID);
-        view.tvTime.setText(campaign.startDate + " to " + campaign.endDate);
+        view.tvTime.setText("From " +campaign.startDate + " to " + campaign.endDate);
         view.tvCampaignId.setText(campaign.campaignID);
         view.tvState.setText("On going");
         view.tvState.setTextColor(context.getResources().getColor(R.color.colorPrimary));
+        view.bind(campaigns.get(i), listener);
     }
 
     @Override
@@ -65,6 +72,14 @@ public class CampaignAdapter extends RecyclerView.Adapter<CampaignAdapter.Campai
             ivBanner = itemView.findViewById(R.id.ivBanner);
             tvState = itemView.findViewById(R.id.tvState);
             tvCampaignId = itemView.findViewById(R.id.tvCampaignID);
+        }
+
+        public void bind(final Campaign item, final OnItemClickListener listener) {
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override public void onClick(View v) {
+                    listener.onItemClick(item);
+                }
+            });
         }
     }
 }

@@ -8,9 +8,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import swd.affiliate_marketing.model.Campaign;
+
 public class MainActivity extends AppCompatActivity {
 
 
+    private Campaign currentCampaign = null;
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -53,6 +56,19 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
         return false;
+    }
+
+    public void openCampaignDetailFragment(Campaign campaign){
+        CampaignDetailFragment detailFragment = new CampaignDetailFragment();
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragment_container, detailFragment)
+                .commit();
+        currentCampaign = campaign;
+    }
+
+    public Campaign getCurrentCampaign(){
+        return currentCampaign;
     }
 
 }

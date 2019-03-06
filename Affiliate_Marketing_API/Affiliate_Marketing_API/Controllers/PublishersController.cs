@@ -16,11 +16,11 @@ namespace Affiliate_Marketing_API.Controllers
     {
         private AffiliateMarketingDBEntities db = new AffiliateMarketingDBEntities();
 
-        // GET: api/Publishers
-        public IQueryable<Publisher> GetPublishers()
-        {
-            return db.Publishers;
-        }
+        //// GET: api/Publishers
+        //public IQueryable<Publisher> GetPublishers()
+        //{
+        //    return db.Publishers;
+        //}
 
         // GET: api/Publishers/5
         [ResponseType(typeof(Publisher))]
@@ -33,6 +33,29 @@ namespace Affiliate_Marketing_API.Controllers
             }
 
             return Ok(publisher);
+        }
+
+        [HttpGet]
+        [Route("api/Publishers/Login")]
+        [ResponseType(typeof(Publisher))]
+        public IHttpActionResult LoginPublisher(string id, string password)
+        {
+            Publisher publisher = db.Publishers.Find(id);
+            if (publisher == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                if (publisher.password.Equals(password))
+                {
+                    return Ok(publisher);
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
         }
 
         // PUT: api/Publishers/5

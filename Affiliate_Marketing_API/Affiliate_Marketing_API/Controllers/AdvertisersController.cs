@@ -16,11 +16,11 @@ namespace Affiliate_Marketing_API.Controllers
     {
         private AffiliateMarketingDBEntities db = new AffiliateMarketingDBEntities();
 
-        // GET: api/Advertisers
-        public IQueryable<Advertiser> GetAdvertisers()
-        {
-            return db.Advertisers;
-        }
+        //// GET: api/Advertisers
+        //public IQueryable<Advertiser> GetAdvertisers()
+        //{
+        //    return db.Advertisers;
+        //}
 
         // GET: api/Advertisers/5
         [ResponseType(typeof(Advertiser))]

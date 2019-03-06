@@ -172,7 +172,6 @@ D:\Studying\A_SPRING2019-SWD319\Affiliate_Marketing\Affiliate_Marketing_API\Affi
 D:\Studying\A_SPRING2019-SWD319\Affiliate_Marketing\Affiliate_Marketing_API\Affiliate_Marketing_API\bin\System.Diagnostics.DiagnosticSource.xml
 D:\Studying\A_SPRING2019-SWD319\Affiliate_Marketing\Affiliate_Marketing_API\Affiliate_Marketing_API\bin\Microsoft.AspNet.TelemetryCorrelation.xml
 D:\Studying\A_SPRING2019-SWD319\Affiliate_Marketing\Affiliate_Marketing_API\Affiliate_Marketing_API\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\Studying\A_SPRING2019-SWD319\Affiliate_Marketing\Affiliate_Marketing_API\Affiliate_Marketing_API\obj\Debug\Affiliate_Marketing_API.csprojAssemblyReference.cache
 D:\Studying\A_SPRING2019-SWD319\Affiliate_Marketing\Affiliate_Marketing_API\Affiliate_Marketing_API\obj\Debug\Affiliate_Marketing_API.csproj.CoreCompileInputs.cache
 D:\Studying\A_SPRING2019-SWD319\Affiliate_Marketing\Affiliate_Marketing_API\Affiliate_Marketing_API\obj\Debug\Affiliate_Marketing_API.csproj.CopyComplete
 D:\Studying\A_SPRING2019-SWD319\Affiliate_Marketing\Affiliate_Marketing_API\Affiliate_Marketing_API\obj\Debug\Affiliate_Marketing_API.dll

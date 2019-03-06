@@ -1,6 +1,7 @@
 package swd.affiliate_marketing;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
@@ -46,7 +47,6 @@ public class CampaignFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_campaign, container, false);
         rvCampaign = view.findViewById(R.id.rvCampaigns);
-//        rvCampaign = container.findViewById(R.id.rvCampaigns);
 
         rvCampaign.setLayoutManager(new GridLayoutManager(getContext(), 1));
 
@@ -76,7 +76,12 @@ public class CampaignFragment extends Fragment {
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        rvCampaign.setAdapter(new CampaignAdapter(campaigns, getContext()));
+                        rvCampaign.setAdapter(new CampaignAdapter(campaigns, getContext(), new CampaignAdapter.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(Campaign item) {
+                                ((MainActivity) getActivity()).openCampaignDetailFragment(item);
+                            }
+                        }));
                     }
                 });
             }
