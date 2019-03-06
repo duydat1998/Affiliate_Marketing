@@ -29,6 +29,9 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.navigation_profile:
                     loadFragment(new ProfileFragment());
                     return true;
+                case R.id.navigation_notification:
+                    loadFragment(new NotificationFragment());
+                    return true;
             }
             return false;
         }

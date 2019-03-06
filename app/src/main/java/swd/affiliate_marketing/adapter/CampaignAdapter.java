@@ -68,7 +68,7 @@ public class CampaignAdapter extends RecyclerView.Adapter<CampaignAdapter.Campai
             super(itemView);
             tvAdvertiserName =  itemView.findViewById(R.id.tvAdvertiserName);
             tvCampaignName =  itemView.findViewById(R.id.tvCampaignName);
-            tvTime = itemView.findViewById(R.id.tvState);
+            tvTime = itemView.findViewById(R.id.tvTime);
             ivBanner = itemView.findViewById(R.id.ivBanner);
             tvState = itemView.findViewById(R.id.tvState);
             tvCampaignId = itemView.findViewById(R.id.tvCampaignID);
