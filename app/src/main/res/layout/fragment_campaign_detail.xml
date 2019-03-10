@@ -63,6 +63,7 @@
             android:layout_height="150dp"
             android:id="@+id/tvCampaignContent"
             android:background="@drawable/textview_border"
+            android:scrollbars="vertical"
             />
     </LinearLayout>
 

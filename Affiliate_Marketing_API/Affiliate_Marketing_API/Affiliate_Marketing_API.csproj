@@ -202,6 +202,8 @@
     <Compile Include="Models\CampaignRegistration.cs">
       <DependentUpon>AffiliateMarketingModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CampaignRegistrationObject.cs" />
+    <Compile Include="Models\LoginObject.cs" />
     <Compile Include="Models\PromotionCode.cs">
       <DependentUpon>AffiliateMarketingModel.tt</DependentUpon>
     </Compile>

@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import swd.affiliate_marketing.global.GlobalVariable;
 import swd.affiliate_marketing.model.Publisher;
@@ -42,20 +43,20 @@ public class ProfileFragment extends Fragment {
         Publisher publisher = ((GlobalVariable) getActivity().getApplication()).publisher;
 
         tvUsername.setText("Username: "+publisher.publisherID);
-        tvName.setText("Name: "+publisher.firstname+publisher.lastname);
+        tvName.setText("Name: "+publisher.firstname+ " " +publisher.lastname);
         tvPhone.setText("Phone number: "+ publisher.phone);
         tvEmail.setText("Email address: "+ publisher.email);
         btnViewCampaign.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Toast.makeText(getContext(), "View registered campaigns", Toast.LENGTH_SHORT).show();
             }
         });
 
         btnGetReport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Toast.makeText(getContext(), "view report", Toast.LENGTH_SHORT).show();
             }
         });
         return view;

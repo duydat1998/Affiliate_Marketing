@@ -14,7 +14,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Campaign"
+            android:text="Campaigns"
             android:textStyle="bold"/>
 
         <android.support.v7.widget.RecyclerView

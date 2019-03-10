@@ -72,8 +72,14 @@ namespace Affiliate_Marketing_API.Controllers
 
         // POST: api/CampaignRegistrations
         [ResponseType(typeof(CampaignRegistration))]
-        public IHttpActionResult PostCampaignRegistration(CampaignRegistration campaignRegistration)
+        public IHttpActionResult PostCampaignRegistration(CampaignRegistrationObject registrationObject)
         {
+            System.DateTime date = DateTime.Now;
+            CampaignRegistration campaignRegistration = new CampaignRegistration();
+            campaignRegistration.campaignID = registrationObject.campaignID;
+            campaignRegistration.promotionCode = registrationObject.promotionCode;
+            campaignRegistration.publisherID = registrationObject.publisherID;
+            campaignRegistration.registerDate = date;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);

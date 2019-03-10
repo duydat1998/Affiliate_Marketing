@@ -35,19 +35,19 @@ namespace Affiliate_Marketing_API.Controllers
             return Ok(publisher);
         }
 
-        [HttpGet]
+        //[HttpPost]
         [Route("api/Publishers/Login")]
         [ResponseType(typeof(Publisher))]
-        public IHttpActionResult LoginPublisher(string id, string password)
+        public IHttpActionResult PostPublisherLogin(LoginObject login)
         {
-            Publisher publisher = db.Publishers.Find(id);
+            Publisher publisher = db.Publishers.Find(login.username);
             if (publisher == null)
             {
                 return NotFound();
             }
             else
             {
-                if (publisher.password.Equals(password))
+                if (publisher.password.Equals(login.password))
                 {
                     return Ok(publisher);
                 }

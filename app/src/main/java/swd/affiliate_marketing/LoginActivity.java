@@ -13,15 +13,22 @@ import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.Moshi;
 import com.squareup.moshi.Types;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.List;
 
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.FormBody;
+import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 import okhttp3.Response;
+import okio.BufferedSink;
 import swd.affiliate_marketing.adapter.CampaignAdapter;
 import swd.affiliate_marketing.global.GlobalVariable;
 import swd.affiliate_marketing.model.Campaign;
@@ -52,8 +59,24 @@ public class LoginActivity extends AppCompatActivity {
 
         String domain = getResources().getString(R.string.virtual_api);
 
-        String url = domain + "api/Publishers/Login?id="+username+"&password="+password;
-        Request request = new Request.Builder().url(url).build();
+        String url = domain + "api/Publishers/Login";
+
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("username", username);
+            jsonObject.put("password", password);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+        RequestBody formBody = RequestBody.create(JSON, jsonObject.toString());
+        Request request = new Request.Builder()
+                .url(url)
+                .post(formBody)
+                .build();
+
         okHttpClient.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
@@ -65,7 +88,6 @@ public class LoginActivity extends AppCompatActivity {
                         tvLoginError.setText("Invalid username or password");
                     }
                 });
-
             }
 
             @Override
@@ -95,9 +117,6 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     });
                 }
-
-
-
             }
         });
 

@@ -7,13 +7,16 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import swd.affiliate_marketing.model.Campaign;
+import swd.affiliate_marketing.model.CampaignRegistration;
 
 public class MainActivity extends AppCompatActivity {
 
 
     private Campaign currentCampaign = null;
+    private CampaignRegistration currentCampaignRegistration = null;
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -45,13 +48,18 @@ public class MainActivity extends AppCompatActivity {
         //loading the default fragment
         loadFragment(new CampaignFragment());
 
+        currentCampaign = null;
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 
-    private boolean loadFragment(Fragment fragment) {
+    public boolean loadFragment(Fragment fragment) {
         //switching fragment
         if (fragment != null) {
+            if(fragment instanceof CampaignFragment){
+                currentCampaign = null;
+                currentCampaignRegistration = null;
+            }
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.fragment_container, fragment)
@@ -70,8 +78,20 @@ public class MainActivity extends AppCompatActivity {
         currentCampaign = campaign;
     }
 
+    public void openCampaignRegisterFragment(CampaignRegistration campaignRegistration){
+        CampaignRegisterFragment registerFragment = new CampaignRegisterFragment();
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragment_container, registerFragment)
+                .commit();
+        currentCampaignRegistration = campaignRegistration;
+    }
+
     public Campaign getCurrentCampaign(){
         return currentCampaign;
+    }
+    public CampaignRegistration getCurrentCampaignRegistration(){
+        return currentCampaignRegistration;
     }
 
 }
