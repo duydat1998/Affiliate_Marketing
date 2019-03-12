@@ -17,11 +17,16 @@ namespace Affiliate_Marketing_API.Controllers
         private AffiliateMarketingDBEntities db = new AffiliateMarketingDBEntities();
 
         // GET: api/PromotionCodeTrackings
-        public IQueryable<PromotionCodeTracking> GetPromotionCodeTrackings()
-        {
-            return db.PromotionCodeTrackings;
-        }
+        //public IQueryable<PromotionCodeTracking> GetPromotionCodeTrackings()
+        //{
+        //    return db.PromotionCodeTrackings;
+        //}
 
+        /// <summary>
+        /// Get Promotion Code tracking detail
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         // GET: api/PromotionCodeTrackings/5
         [ResponseType(typeof(PromotionCodeTracking))]
         public IHttpActionResult GetPromotionCodeTracking(int id)
@@ -36,39 +41,39 @@ namespace Affiliate_Marketing_API.Controllers
         }
 
         // PUT: api/PromotionCodeTrackings/5
-        [ResponseType(typeof(void))]
-        public IHttpActionResult PutPromotionCodeTracking(int id, PromotionCodeTracking promotionCodeTracking)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //[ResponseType(typeof(void))]
+        //public IHttpActionResult PutPromotionCodeTracking(int id, PromotionCodeTracking promotionCodeTracking)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-            if (id != promotionCodeTracking.trackingId)
-            {
-                return BadRequest();
-            }
+        //    if (id != promotionCodeTracking.trackingId)
+        //    {
+        //        return BadRequest();
+        //    }
 
-            db.Entry(promotionCodeTracking).State = EntityState.Modified;
+        //    db.Entry(promotionCodeTracking).State = EntityState.Modified;
 
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!PromotionCodeTrackingExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+        //    try
+        //    {
+        //        db.SaveChanges();
+        //    }
+        //    catch (DbUpdateConcurrencyException)
+        //    {
+        //        if (!PromotionCodeTrackingExists(id))
+        //        {
+        //            return NotFound();
+        //        }
+        //        else
+        //        {
+        //            throw;
+        //        }
+        //    }
 
-            return StatusCode(HttpStatusCode.NoContent);
-        }
+        //    return StatusCode(HttpStatusCode.NoContent);
+        //}
 
         // POST: api/PromotionCodeTrackings
         [ResponseType(typeof(PromotionCodeTracking))]
@@ -86,20 +91,20 @@ namespace Affiliate_Marketing_API.Controllers
         }
 
         // DELETE: api/PromotionCodeTrackings/5
-        [ResponseType(typeof(PromotionCodeTracking))]
-        public IHttpActionResult DeletePromotionCodeTracking(int id)
-        {
-            PromotionCodeTracking promotionCodeTracking = db.PromotionCodeTrackings.Find(id);
-            if (promotionCodeTracking == null)
-            {
-                return NotFound();
-            }
+        //[ResponseType(typeof(PromotionCodeTracking))]
+        //public IHttpActionResult DeletePromotionCodeTracking(int id)
+        //{
+        //    PromotionCodeTracking promotionCodeTracking = db.PromotionCodeTrackings.Find(id);
+        //    if (promotionCodeTracking == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            db.PromotionCodeTrackings.Remove(promotionCodeTracking);
-            db.SaveChanges();
+        //    db.PromotionCodeTrackings.Remove(promotionCodeTracking);
+        //    db.SaveChanges();
 
-            return Ok(promotionCodeTracking);
-        }
+        //    return Ok(promotionCodeTracking);
+        //}
 
         protected override void Dispose(bool disposing)
         {

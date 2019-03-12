@@ -22,6 +22,12 @@ namespace Affiliate_Marketing_API.Controllers
         //    return db.Publishers;
         //}
 
+
+        /// <summary>
+        /// Get Publisher information by publisherID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         // GET: api/Publishers/5
         [ResponseType(typeof(Publisher))]
         public IHttpActionResult GetPublisher(string id)
@@ -35,6 +41,11 @@ namespace Affiliate_Marketing_API.Controllers
             return Ok(publisher);
         }
 
+        /// <summary>
+        /// Login by username and password
+        /// </summary>
+        /// <param name="login"></param>
+        /// <returns></returns>
         //[HttpPost]
         [Route("api/Publishers/Login")]
         [ResponseType(typeof(Publisher))]
@@ -58,86 +69,98 @@ namespace Affiliate_Marketing_API.Controllers
             }
         }
 
-        // PUT: api/Publishers/5
-        [ResponseType(typeof(void))]
-        public IHttpActionResult PutPublisher(string id, Publisher publisher)
+        /// <summary>
+        /// Get all registered Campaign of the Publisher
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [Route("api/Publishers/{id}/Campaigns")]
+        public IQueryable<CampaignRegistration> GetCampaignRegistrations(string id)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != publisher.publisherID)
-            {
-                return BadRequest();
-            }
-
-            db.Entry(publisher).State = EntityState.Modified;
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!PublisherExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
+            IQueryable<CampaignRegistration> result = db.CampaignRegistrations.Where(c => c.publisherID.Equals(id));
+            return result;
         }
+
+        // PUT: api/Publishers/5
+        //[ResponseType(typeof(void))]
+        //public IHttpActionResult PutPublisher(string id, Publisher publisher)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
+
+        //    if (id != publisher.publisherID)
+        //    {
+        //        return BadRequest();
+        //    }
+
+        //    db.Entry(publisher).State = EntityState.Modified;
+
+        //    try
+        //    {
+        //        db.SaveChanges();
+        //    }
+        //    catch (DbUpdateConcurrencyException)
+        //    {
+        //        if (!PublisherExists(id))
+        //        {
+        //            return NotFound();
+        //        }
+        //        else
+        //        {
+        //            throw;
+        //        }
+        //    }
+
+        //    return StatusCode(HttpStatusCode.NoContent);
+        //}
 
         // POST: api/Publishers
-        [ResponseType(typeof(Publisher))]
-        public IHttpActionResult PostPublisher(Publisher publisher)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //[ResponseType(typeof(Publisher))]
+        //public IHttpActionResult PostPublisher(Publisher publisher)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-            db.Publishers.Add(publisher);
+        //    db.Publishers.Add(publisher);
 
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateException)
-            {
-                if (PublisherExists(publisher.publisherID))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+        //    try
+        //    {
+        //        db.SaveChanges();
+        //    }
+        //    catch (DbUpdateException)
+        //    {
+        //        if (PublisherExists(publisher.publisherID))
+        //        {
+        //            return Conflict();
+        //        }
+        //        else
+        //        {
+        //            throw;
+        //        }
+        //    }
 
-            return CreatedAtRoute("DefaultApi", new { id = publisher.publisherID }, publisher);
-        }
+        //    return CreatedAtRoute("DefaultApi", new { id = publisher.publisherID }, publisher);
+        //}
 
         // DELETE: api/Publishers/5
-        [ResponseType(typeof(Publisher))]
-        public IHttpActionResult DeletePublisher(string id)
-        {
-            Publisher publisher = db.Publishers.Find(id);
-            if (publisher == null)
-            {
-                return NotFound();
-            }
+        //[ResponseType(typeof(Publisher))]
+        //public IHttpActionResult DeletePublisher(string id)
+        //{
+        //    Publisher publisher = db.Publishers.Find(id);
+        //    if (publisher == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            db.Publishers.Remove(publisher);
-            db.SaveChanges();
+        //    db.Publishers.Remove(publisher);
+        //    db.SaveChanges();
 
-            return Ok(publisher);
-        }
+        //    return Ok(publisher);
+        //}
 
         protected override void Dispose(bool disposing)
         {

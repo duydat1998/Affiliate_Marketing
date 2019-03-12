@@ -15,13 +15,22 @@ namespace Affiliate_Marketing_API.Controllers
     public class CampaignRegistrationsController : ApiController
     {
         private AffiliateMarketingDBEntities db = new AffiliateMarketingDBEntities();
-
+        /// <summary>
+        /// Get all Campaign Registration
+        /// </summary>
+        /// <returns></returns>
         // GET: api/CampaignRegistrations
         public IQueryable<CampaignRegistration> GetCampaignRegistrations()
         {
             return db.CampaignRegistrations;
         }
 
+
+        /// <summary>
+        /// Get Campaign Registration detail by ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         // GET: api/CampaignRegistrations/5
         [ResponseType(typeof(CampaignRegistration))]
         public IHttpActionResult GetCampaignRegistration(string id)
@@ -35,6 +44,12 @@ namespace Affiliate_Marketing_API.Controllers
             return Ok(campaignRegistration);
         }
 
+        /// <summary>
+        /// Update Campaign registration
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="campaignRegistration"></param>
+        /// <returns></returns>
         // PUT: api/CampaignRegistrations/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutCampaignRegistration(string id, CampaignRegistration campaignRegistration)
@@ -70,6 +85,11 @@ namespace Affiliate_Marketing_API.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+        /// <summary>
+        /// Register new Campaign
+        /// </summary>
+        /// <param name="registrationObject"></param>
+        /// <returns></returns>
         // POST: api/CampaignRegistrations
         [ResponseType(typeof(CampaignRegistration))]
         public IHttpActionResult PostCampaignRegistration(CampaignRegistrationObject registrationObject)
@@ -106,6 +126,11 @@ namespace Affiliate_Marketing_API.Controllers
             return CreatedAtRoute("DefaultApi", new { id = campaignRegistration.campaignID }, campaignRegistration);
         }
 
+        /// <summary>
+        /// Delete Campaign Registration/ Unregister a campaign
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         // DELETE: api/CampaignRegistrations/5
         [ResponseType(typeof(CampaignRegistration))]
         public IHttpActionResult DeleteCampaignRegistration(string id)

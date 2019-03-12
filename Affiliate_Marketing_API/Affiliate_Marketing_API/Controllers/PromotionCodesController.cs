@@ -17,11 +17,16 @@ namespace Affiliate_Marketing_API.Controllers
         private AffiliateMarketingDBEntities db = new AffiliateMarketingDBEntities();
 
         // GET: api/PromotionCodes
-        public IQueryable<PromotionCode> GetPromotionCodes()
-        {
-            return db.PromotionCodes;
-        }
+        //public IQueryable<PromotionCode> GetPromotionCodes()
+        //{
+        //    return db.PromotionCodes;
+        //}
 
+        /// <summary>
+        /// Get Promotion Code Detail by code
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         // GET: api/PromotionCodes/5
         [ResponseType(typeof(PromotionCode))]
         public IHttpActionResult GetPromotionCode(string id)
@@ -35,6 +40,25 @@ namespace Affiliate_Marketing_API.Controllers
             return Ok(promotionCode);
         }
 
+        /// <summary>
+        /// Get all trackings of a promotion code
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [Route("api/PromotionCodes/{id}/Trackings")]
+        public IQueryable<PromotionCodeTracking> GetPromotionCodeTrackings(string id)
+        {
+            IQueryable<PromotionCodeTracking> result
+                = db.PromotionCodeTrackings.Where(t => t.promotionCode.Equals(id));
+            return result;
+        }
+
+        /// <summary>
+        /// Update Promotion Code information
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="promotionCode"></param>
+        /// <returns></returns>
         // PUT: api/PromotionCodes/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutPromotionCode(string id, PromotionCode promotionCode)
@@ -70,6 +94,11 @@ namespace Affiliate_Marketing_API.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+        /// <summary>
+        /// Create new Promotion Code
+        /// </summary>
+        /// <param name="promotionCode"></param>
+        /// <returns></returns>
         // POST: api/PromotionCodes
         [ResponseType(typeof(PromotionCode))]
         public IHttpActionResult PostPromotionCode(PromotionCode promotionCode)
@@ -100,6 +129,11 @@ namespace Affiliate_Marketing_API.Controllers
             return CreatedAtRoute("DefaultApi", new { id = promotionCode.promotionCode1 }, promotionCode);
         }
 
+        /// <summary>
+        /// Delete Promotion code by code
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         // DELETE: api/PromotionCodes/5
         [ResponseType(typeof(PromotionCode))]
         public IHttpActionResult DeletePromotionCode(string id)

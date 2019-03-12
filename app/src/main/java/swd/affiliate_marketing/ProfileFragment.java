@@ -49,7 +49,7 @@ public class ProfileFragment extends Fragment {
         btnViewCampaign.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "View registered campaigns", Toast.LENGTH_SHORT).show();
+                ((MainActivity) getActivity()).loadFragment(new RegisteredCampaignFragment());
             }
         });
 

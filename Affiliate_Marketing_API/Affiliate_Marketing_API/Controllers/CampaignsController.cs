@@ -16,12 +16,21 @@ namespace Affiliate_Marketing_API.Controllers
     {
         private AffiliateMarketingDBEntities db = new AffiliateMarketingDBEntities();
 
+        /// <summary>
+        /// get all on-going Campaign
+        /// </summary>
+        /// <returns></returns>
         // GET: api/Campaigns
         public IQueryable<Campaign> GetCampaigns()
         {
             return db.Campaigns;
         }
 
+        /// <summary>
+        /// Get Campaign by CampaignID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         // GET: api/Campaigns/5
         [ResponseType(typeof(Campaign))]
         public IHttpActionResult GetCampaign(string id)
@@ -36,85 +45,85 @@ namespace Affiliate_Marketing_API.Controllers
         }
 
         // PUT: api/Campaigns/5
-        [ResponseType(typeof(void))]
-        public IHttpActionResult PutCampaign(string id, Campaign campaign)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //[ResponseType(typeof(void))]
+        //public IHttpActionResult PutCampaign(string id, Campaign campaign)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-            if (id != campaign.campaignID)
-            {
-                return BadRequest();
-            }
+        //    if (id != campaign.campaignID)
+        //    {
+        //        return BadRequest();
+        //    }
 
-            db.Entry(campaign).State = EntityState.Modified;
+        //    db.Entry(campaign).State = EntityState.Modified;
 
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!CampaignExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+        //    try
+        //    {
+        //        db.SaveChanges();
+        //    }
+        //    catch (DbUpdateConcurrencyException)
+        //    {
+        //        if (!CampaignExists(id))
+        //        {
+        //            return NotFound();
+        //        }
+        //        else
+        //        {
+        //            throw;
+        //        }
+        //    }
 
-            return StatusCode(HttpStatusCode.NoContent);
-        }
+        //    return StatusCode(HttpStatusCode.NoContent);
+        //}
 
         // POST: api/Campaigns
-        [ResponseType(typeof(Campaign))]
-        public IHttpActionResult PostCampaign(Campaign campaign)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //[ResponseType(typeof(Campaign))]
+        //public IHttpActionResult PostCampaign(Campaign campaign)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-            db.Campaigns.Add(campaign);
+        //    db.Campaigns.Add(campaign);
 
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateException)
-            {
-                if (CampaignExists(campaign.campaignID))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+        //    try
+        //    {
+        //        db.SaveChanges();
+        //    }
+        //    catch (DbUpdateException)
+        //    {
+        //        if (CampaignExists(campaign.campaignID))
+        //        {
+        //            return Conflict();
+        //        }
+        //        else
+        //        {
+        //            throw;
+        //        }
+        //    }
 
-            return CreatedAtRoute("DefaultApi", new { id = campaign.campaignID }, campaign);
-        }
+        //    return CreatedAtRoute("DefaultApi", new { id = campaign.campaignID }, campaign);
+        //}
 
         // DELETE: api/Campaigns/5
-        [ResponseType(typeof(Campaign))]
-        public IHttpActionResult DeleteCampaign(string id)
-        {
-            Campaign campaign = db.Campaigns.Find(id);
-            if (campaign == null)
-            {
-                return NotFound();
-            }
+        //[ResponseType(typeof(Campaign))]
+        //public IHttpActionResult DeleteCampaign(string id)
+        //{
+        //    Campaign campaign = db.Campaigns.Find(id);
+        //    if (campaign == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            db.Campaigns.Remove(campaign);
-            db.SaveChanges();
+        //    db.Campaigns.Remove(campaign);
+        //    db.SaveChanges();
 
-            return Ok(campaign);
-        }
+        //    return Ok(campaign);
+        //}
 
         protected override void Dispose(bool disposing)
         {
