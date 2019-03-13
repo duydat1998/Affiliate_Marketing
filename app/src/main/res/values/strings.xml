@@ -10,6 +10,8 @@
     <string name="title_activity_main">MainActivity</string>
 
     <string name="virtual_api">http://10.0.2.2/affiliatemarketing/</string>
+    <!--<string name="virtual_api">http://192.168.8.101/affiliatemarketing/</string>-->
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

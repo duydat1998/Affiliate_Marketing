@@ -1,7 +1,9 @@
 package swd.affiliate_marketing.model;
 
 
-public class CampaignRegistration {
+import java.io.Serializable;
+
+public class CampaignRegistration implements Serializable {
     public String campaignID ;
     public String publisherID ;
     public String promotionCode ;

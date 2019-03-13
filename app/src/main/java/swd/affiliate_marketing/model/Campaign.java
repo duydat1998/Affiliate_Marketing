@@ -1,7 +1,9 @@
 package swd.affiliate_marketing.model;
 
 
-public class Campaign {
+import java.io.Serializable;
+
+public class Campaign implements Serializable {
     public String campaignID ;
     public String campaignName ;
     public String banner ;

@@ -6,8 +6,6 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import swd.affiliate_marketing.model.Campaign;
 import swd.affiliate_marketing.model.CampaignRegistration;
@@ -17,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Campaign currentCampaign = null;
     private CampaignRegistration currentCampaignRegistration = null;
+
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 

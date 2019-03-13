@@ -1,6 +1,8 @@
 package swd.affiliate_marketing.model;
 
-public class Advertiser {
+import java.io.Serializable;
+
+public class Advertiser implements Serializable {
     public String advertiserID ;
     public String advertiserName ;
     public String phone ;
