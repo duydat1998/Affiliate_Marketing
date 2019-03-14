@@ -56,9 +56,10 @@ public class ProfileFragment extends Fragment {
         btnGetReport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "view report", Toast.LENGTH_SHORT).show();
+                ((MainActivity) getActivity()).loadFragment(new ReportFragment());
             }
         });
+        
         return view;
     }
 
