@@ -13,6 +13,7 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import swd.affiliate_marketing.R;
+import swd.affiliate_marketing.global.GlobalVariable;
 import swd.affiliate_marketing.model.Campaign;
 
 public class CampaignAdapter extends RecyclerView.Adapter<CampaignAdapter.CampaignItemViewHolder> {
@@ -43,12 +44,14 @@ public class CampaignAdapter extends RecyclerView.Adapter<CampaignAdapter.Campai
         Picasso.with(context)
                 .load(campaign.banner).into(view.ivBanner);
         view.tvCampaignName.setText(campaign.campaignName);
-        view.tvAdvertiserName.setText(campaign.advertiserID);
+//        view.tvAdvertiserName.setText(campaign.advertiserID);
+        campaign.advertiserName = ((GlobalVariable) context.getApplicationContext()).getAdvertiserName(campaign.advertiserID);
+        view.tvAdvertiserName.setText("From advertiser: "+campaign.advertiserName);
         view.tvTime.setText("From " +campaign.startDate + " to " + campaign.endDate);
         view.tvCampaignId.setText(campaign.campaignID);
         view.tvState.setText("On going");
         view.tvState.setTextColor(context.getResources().getColor(R.color.colorPrimary));
-        view.bind(campaigns.get(i), listener);
+        view.bind(campaign, listener);
     }
 
     @Override

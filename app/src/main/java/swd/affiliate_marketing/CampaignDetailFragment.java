@@ -67,7 +67,7 @@ public class CampaignDetailFragment extends Fragment {
             tvCampaignID.setText(currentCampaign.campaignID);
 
             tvAdvertiser = view.findViewById(R.id.tvAdvertiser);
-            tvAdvertiser.setText("Advertiser: "+currentCampaign.advertiserID);
+            tvAdvertiser.setText("Advertiser: "+currentCampaign.advertiserName);
 
             tvCampaignDate = view.findViewById(R.id.tvCampaignDate);
             tvCampaignDate.setText("From "+currentCampaign.startDate + " to "+currentCampaign.endDate);

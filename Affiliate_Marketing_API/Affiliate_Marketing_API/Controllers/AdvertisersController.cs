@@ -39,7 +39,24 @@ namespace Affiliate_Marketing_API.Controllers
 
             return Ok(advertiser);
         }
+        
+        /// <summary>
+        /// Get Advertiser name by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [ResponseType(typeof(string))]
+        [Route("api/Advertisers/Name/{id}")]
+        public IHttpActionResult GetAdvertiserName(string id)
+        {
+            Advertiser advertiser = db.Advertisers.Find(id);
+            if (advertiser == null)
+            {
+                return NotFound();
+            }
 
+            return Ok(advertiser.advertiserName);
+        }
         // PUT: api/Advertisers/5
         //[ResponseType(typeof(void))]
         //public IHttpActionResult PutAdvertiser(string id, Advertiser advertiser)

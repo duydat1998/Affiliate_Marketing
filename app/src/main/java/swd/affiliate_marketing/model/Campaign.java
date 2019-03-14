@@ -16,4 +16,5 @@ public class Campaign implements Serializable {
     public double maxAmountDiscount ;
     public double percentComission ;
     public boolean isWorking ;
+    public String advertiserName;
 }

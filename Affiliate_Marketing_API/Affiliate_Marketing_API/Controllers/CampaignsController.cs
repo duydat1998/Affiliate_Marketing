@@ -44,6 +44,23 @@ namespace Affiliate_Marketing_API.Controllers
             return Ok(campaign);
         }
 
+        /// <summary>
+        /// Get Campaign name by ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [ResponseType(typeof(string))]
+        [Route("api/Campaigns/Name/{id}")]
+        public IHttpActionResult GetCampaignName(string id)
+        {
+            Campaign campaign = db.Campaigns.Find(id);
+            if (campaign == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(campaign.campaignName);
+        }
         // PUT: api/Campaigns/5
         //[ResponseType(typeof(void))]
         //public IHttpActionResult PutCampaign(string id, Campaign campaign)

@@ -5,17 +5,44 @@
     android:layout_height="match_parent"
     tools:context=".ReportFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <android.support.v4.app.FragmentTabHost
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/fragment_tab_host">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <FrameLayout
+                    android:id="@+id/tab_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_weight="1">
+
+                </FrameLayout>
+
+            </LinearLayout>
+        </android.support.v4.app.FragmentTabHost>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:gravity="bottom"
         android:padding="10dp">
-        <TextView
+        <Button
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Report"
-            android:textStyle="bold"/>
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorWhite"
+            android:background="@color/colorPrimary"
+            android:text="done"
+            android:id="@+id/btnDone"
+            />
     </LinearLayout>
 </FrameLayout>

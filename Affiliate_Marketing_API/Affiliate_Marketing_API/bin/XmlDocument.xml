@@ -488,6 +488,13 @@
             <param name="id"></param>
             <returns></returns>
         </member>
+        <member name="M:Affiliate_Marketing_API.Controllers.AdvertisersController.GetAdvertiserName(System.String)">
+            <summary>
+            Get Advertiser name by id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
         <member name="M:Affiliate_Marketing_API.Controllers.CampaignRegistrationsController.GetCampaignRegistrations">
             <summary>
             Get all Campaign Registration
@@ -532,6 +539,13 @@
         <member name="M:Affiliate_Marketing_API.Controllers.CampaignsController.GetCampaign(System.String)">
             <summary>
             Get Campaign by CampaignID
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Affiliate_Marketing_API.Controllers.CampaignsController.GetCampaignName(System.String)">
+            <summary>
+            Get Campaign name by ID
             </summary>
             <param name="id"></param>
             <returns></returns>

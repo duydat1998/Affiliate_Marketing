@@ -59,7 +59,7 @@ public class ProfileFragment extends Fragment {
                 ((MainActivity) getActivity()).loadFragment(new ReportFragment());
             }
         });
-        
+
         return view;
     }
 

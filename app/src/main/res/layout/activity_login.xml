@@ -40,7 +40,6 @@
             android:layout_height="wrap_content"
             android:text="Log in"
             android:layout_gravity="center_horizontal"
-            android:textAllCaps="false"
             android:onClick="clickToLogin"
             android:background="@color/colorPrimary"
             android:textColor="@color/colorWhite"
