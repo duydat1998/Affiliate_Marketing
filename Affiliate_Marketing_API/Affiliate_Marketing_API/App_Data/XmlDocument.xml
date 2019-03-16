@@ -593,6 +593,13 @@
             <param name="id"></param>
             <returns></returns>
         </member>
+        <member name="M:Affiliate_Marketing_API.Controllers.PromotionCodeTrackingsController.PostPromotionCodeTracking(Affiliate_Marketing_API.Models.PromotionCodeTracking)">
+            <summary>
+            Insert new promotion code tracking
+            </summary>
+            <param name="promotionCodeTracking"></param>
+            <returns></returns>
+        </member>
         <member name="M:Affiliate_Marketing_API.Controllers.PublishersController.GetPublisher(System.String)">
             <summary>
             Get Publisher information by publisherID

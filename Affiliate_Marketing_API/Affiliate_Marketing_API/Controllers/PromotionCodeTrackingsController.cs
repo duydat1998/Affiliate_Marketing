@@ -75,6 +75,11 @@ namespace Affiliate_Marketing_API.Controllers
         //    return StatusCode(HttpStatusCode.NoContent);
         //}
 
+            /// <summary>
+            /// Insert new promotion code tracking
+            /// </summary>
+            /// <param name="promotionCodeTracking"></param>
+            /// <returns></returns>
         // POST: api/PromotionCodeTrackings
         [ResponseType(typeof(PromotionCodeTracking))]
         public IHttpActionResult PostPromotionCodeTracking(PromotionCodeTracking promotionCodeTracking)
@@ -84,6 +89,20 @@ namespace Affiliate_Marketing_API.Controllers
                 return BadRequest(ModelState);
             }
 
+            PromotionCode promotionCode = db.PromotionCodes.Find(promotionCodeTracking.promotionCode);
+            if( promotionCode == null)
+            {
+                return BadRequest(ModelState);
+            }
+            else
+            {
+                Nullable<double> comissionPercent = promotionCode.percentEarn;
+                if(comissionPercent != null)
+                {
+                    promotionCodeTracking.moneyEarned = (promotionCodeTracking.totalAmoutOfOrder) * (comissionPercent.Value / 100);
+                }
+
+            }
             db.PromotionCodeTrackings.Add(promotionCodeTracking);
             db.SaveChanges();
 
