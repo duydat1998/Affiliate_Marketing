@@ -8,7 +8,10 @@ import com.google.firebase.messaging.RemoteMessage;
 public class MessageService extends FirebaseMessagingService {
 
     public MessageService() {
+
     }
+
+
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
@@ -20,7 +23,7 @@ public class MessageService extends FirebaseMessagingService {
 
         // Check if message contains a data payload.
         if (remoteMessage.getData().size() > 0) {
-            Log.d("Massage: ", "Message data payload: " + remoteMessage.getData());
+            Log.d("Message: ", "Message data payload: " + remoteMessage.getData());
 
 //            if (/* Check if data needs to be processed by long running job */ true) {
 //                // For long-running tasks (10 seconds or more) use Firebase Job Dispatcher.
@@ -34,7 +37,7 @@ public class MessageService extends FirebaseMessagingService {
 
         // Check if message contains a notification payload.
         if (remoteMessage.getNotification() != null) {
-            Log.d("Massage: ", "Message Notification Body: " + remoteMessage.getNotification().getBody());
+            Log.d("Message: ", "Message Notification Body: " + remoteMessage.getNotification().getBody());
         }
 
         // Also if you intend on generating your own notifications as a result of a received FCM

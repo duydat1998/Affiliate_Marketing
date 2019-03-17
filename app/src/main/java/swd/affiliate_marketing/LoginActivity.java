@@ -1,6 +1,7 @@
 package swd.affiliate_marketing;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -45,8 +46,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void clickToLogin(View view) {
-        String username = tvUsername.getText().toString();
-        String password = tvPassword.getText().toString();
+        final String username = tvUsername.getText().toString();
+        final String password = tvPassword.getText().toString();
         tvLoginError.setText("");
         OkHttpClient okHttpClient = new OkHttpClient();
         Moshi moshi = new Moshi.Builder().build();
@@ -95,6 +96,11 @@ public class LoginActivity extends AppCompatActivity {
                     final Publisher publisher = jsonAdapter.fromJson(json);
                     if (publisher != null) {
                         ((GlobalVariable) getApplication()).publisher = publisher;
+                        SharedPreferences sharedPreferences = getSharedPreferences("swd.affiliate_marketing_preferences", MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putString("username", username);
+                        editor.putString("password", password);
+                        editor.commit();
                         Intent intent = new Intent(getBaseContext(), MainActivity.class);
                         startActivity(intent);
                         finish();

@@ -1,11 +1,14 @@
 package swd.affiliate_marketing;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
 
 import swd.affiliate_marketing.model.Campaign;
 import swd.affiliate_marketing.model.CampaignRegistration;
@@ -93,4 +96,13 @@ public class MainActivity extends AppCompatActivity {
         return currentCampaignRegistration;
     }
 
+    public void clickToLogout(View view) {
+        SharedPreferences sharedPreferences = getSharedPreferences("swd.affiliate_marketing_preferences", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("username", null);
+        editor.putString("password", null);
+        editor.commit();
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+    }
 }
