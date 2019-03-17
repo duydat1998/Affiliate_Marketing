@@ -96,13 +96,4 @@ public class MainActivity extends AppCompatActivity {
         return currentCampaignRegistration;
     }
 
-    public void clickToLogout(View view) {
-        SharedPreferences sharedPreferences = getSharedPreferences("swd.affiliate_marketing_preferences", MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("username", null);
-        editor.putString("password", null);
-        editor.commit();
-        Intent intent = new Intent(this, LoginActivity.class);
-        startActivity(intent);
-    }
 }

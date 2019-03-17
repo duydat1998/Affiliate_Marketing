@@ -11,11 +11,28 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="10dp">
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Profile"
-            android:textStyle="bold"/>
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="9"
+                android:layout_height="wrap_content"
+                android:text="Profile"
+                android:textStyle="bold"/>
+            <Button
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Logout"
+                android:padding="5dp"
+                android:id="@+id/btnLogout"
+                android:background="@color/colorPrimary"
+                android:textColor="@color/colorWhite"/>
+
+        </LinearLayout>
+
 
         <ImageView
             android:layout_width="match_parent"
