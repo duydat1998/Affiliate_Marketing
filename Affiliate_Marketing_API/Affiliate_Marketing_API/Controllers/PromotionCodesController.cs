@@ -54,6 +54,24 @@ namespace Affiliate_Marketing_API.Controllers
         }
 
         /// <summary>
+        /// Get total amount earned based on the PromotionCode
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [Route("api/PromotionCodes/{id}/Income")]
+        public IHttpActionResult GetTotalIncomeOfPromotionCode(string id)
+        {
+            double total = 0;
+            IQueryable<PromotionCodeTracking> result
+                = db.PromotionCodeTrackings.Where(t => t.promotionCode.Equals(id));
+            foreach(PromotionCodeTracking p in result)
+            {
+                total += p.moneyEarned;
+            }
+            return Ok(total);
+        }
+
+        /// <summary>
         /// Update Promotion Code information
         /// </summary>
         /// <param name="id"></param>

@@ -81,7 +81,7 @@ public class CampaignReportFragment extends Fragment {
 
     private void initializeData(){
         Picasso.with(getActivity()).load(campaign.banner).into(ivBanner);
-        tvCampaignName.setText(campaign.campaignName + " Report");
+        tvCampaignName.setText(campaign.campaignName + " - Report");
         tvAdvertiser.setText("Advertiser: "+campaign.advertiserID);
         tvCampaignId.setText(campaign.campaignID);
         tvCampaignDate.setText("From "+campaign.startDate+" to "+campaign.endDate);

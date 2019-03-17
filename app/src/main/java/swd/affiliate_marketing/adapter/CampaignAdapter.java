@@ -47,7 +47,7 @@ public class CampaignAdapter extends RecyclerView.Adapter<CampaignAdapter.Campai
 //        view.tvAdvertiserName.setText(campaign.advertiserID);
         campaign.advertiserName = ((GlobalVariable) context.getApplicationContext()).getAdvertiserName(campaign.advertiserID);
         view.tvAdvertiserName.setText("From advertiser: "+campaign.advertiserName);
-        view.tvTime.setText("From " +campaign.startDate + " to " + campaign.endDate);
+        view.tvTime.setText("From " +campaign.startDate.substring(0,10) + " to " + campaign.endDate.substring(0,10));
         view.tvCampaignId.setText(campaign.campaignID);
         view.tvState.setText("On going");
         view.tvState.setTextColor(context.getResources().getColor(R.color.colorPrimary));
