@@ -1,6 +1,8 @@
 package swd.affiliate_marketing;
 
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -21,7 +23,7 @@ public class ProfileFragment extends Fragment {
 
 
     private TextView tvUsername, tvName, tvPhone, tvEmail;
-    private Button btnViewCampaign, btnGetReport;
+    private Button btnViewCampaign, btnGetReport, btnLogout;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -39,6 +41,7 @@ public class ProfileFragment extends Fragment {
         tvEmail = view.findViewById(R.id.txtEmail);
         btnViewCampaign = view.findViewById(R.id.btnViewRegisteredCampaign);
         btnGetReport = view.findViewById(R.id.btnGetReport);
+        btnLogout = view.findViewById(R.id.btnLogout);
 
         Publisher publisher = ((GlobalVariable) getActivity().getApplication()).publisher;
 
@@ -60,6 +63,19 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences sharedPreferences = getActivity().getSharedPreferences("swd.affiliate_marketing_preferences", getActivity().MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString("username", null);
+                editor.putString("password", null);
+                editor.commit();
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                getActivity().startActivity(intent);
+                getActivity().finish();
+            }
+        });
         return view;
     }
 
