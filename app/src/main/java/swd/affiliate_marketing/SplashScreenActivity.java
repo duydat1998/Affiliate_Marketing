@@ -1,10 +1,13 @@
 package swd.affiliate_marketing;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.util.Log;
 import android.view.WindowManager;
+
+import com.google.firebase.iid.FirebaseInstanceId;
 
 public class SplashScreenActivity extends AppCompatActivity {
 
@@ -13,6 +16,9 @@ public class SplashScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        String token = FirebaseInstanceId.getInstance().getToken();
+        Log.i("MainActivity", "Token: " + token);
 
         new Handler().postDelayed(new Runnable() {
             public void run() {
@@ -23,4 +29,5 @@ public class SplashScreenActivity extends AppCompatActivity {
         }, 3000);
 
     }
+
 }

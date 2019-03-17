@@ -1,11 +1,10 @@
 package swd.affiliate_marketing;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -18,30 +17,28 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
-import java.util.List;
 
 import okhttp3.Call;
 import okhttp3.Callback;
-import okhttp3.FormBody;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
-import okio.BufferedSink;
-import swd.affiliate_marketing.adapter.CampaignAdapter;
 import swd.affiliate_marketing.global.GlobalVariable;
-import swd.affiliate_marketing.model.Campaign;
 import swd.affiliate_marketing.model.Publisher;
 
 public class LoginActivity extends AppCompatActivity {
 
     private EditText tvUsername, tvPassword;
     private TextView tvLoginError;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+
         tvUsername = findViewById(R.id.txtLoginUsername);
         tvPassword = findViewById(R.id.txtLoginPassword);
         tvLoginError = findViewById(R.id.txtLoginError);
@@ -94,9 +91,9 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(Call call, Response response) throws IOException {
 
                 String json = response.body().string();
-                if(!json.isEmpty()){
+                if (!json.isEmpty()) {
                     final Publisher publisher = jsonAdapter.fromJson(json);
-                    if(publisher != null){
+                    if (publisher != null) {
                         ((GlobalVariable) getApplication()).publisher = publisher;
                         Intent intent = new Intent(getBaseContext(), MainActivity.class);
                         startActivity(intent);
