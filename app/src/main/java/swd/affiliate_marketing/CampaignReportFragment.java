@@ -122,8 +122,7 @@ public class CampaignReportFragment extends Fragment {
             public void onResponse(Call call, Response response) throws IOException {
 
                 String json = response.body().string();
-                final List<PromotionCodeTracking> result = jsonAdapter.fromJson(json);
-                trackings = result;
+                trackings = jsonAdapter.fromJson(json);
                 countDownLatch.countDown();
             }
         });
@@ -273,6 +272,5 @@ public class CampaignReportFragment extends Fragment {
         row.addView(col1);
         tblCampaignReport.addView(row);
     }
-
 
 }

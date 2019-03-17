@@ -26,6 +26,8 @@ import swd.affiliate_marketing.model.Publisher;
 public class GlobalVariable extends Application {
     public Publisher publisher;
     private String advertiserName;
+    private String campaignName;
+    private Campaign campaign;
 
     private static final String ALPHA_NUMERIC_STRING = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
@@ -74,5 +76,73 @@ public class GlobalVariable extends Application {
             e.printStackTrace();
         }
         return advertiserName;
+    }
+
+    public String getCampaignName(String id){
+        OkHttpClient okHttpClient = new OkHttpClient();
+        String domain = getResources().getString(R.string.virtual_api);
+
+        String url = domain + "api/Campaigns/Name/"+ id;
+        Request request = new Request.Builder().url(url).build();
+        final CountDownLatch countDownLatch = new CountDownLatch(1);
+        okHttpClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                e.printStackTrace();
+                Log.e("Get data API Error: ", e.getMessage());
+                countDownLatch.countDown();
+                campaignName = "";
+            }
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                campaignName = response.body().string();
+                campaignName = campaignName.substring(1);
+                campaignName = campaignName.substring(0, campaignName.length()-1);
+                countDownLatch.countDown();
+            }
+        });
+        try {
+            countDownLatch.await();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return campaignName;
+    }
+
+    public Campaign getCampaignByID(String id){
+        OkHttpClient okHttpClient = new OkHttpClient();
+        Moshi moshi = new Moshi.Builder().build();
+
+        Type campaignType = Types.newParameterizedType(Campaign.class);
+        final JsonAdapter<Campaign> jsonAdapter = moshi.adapter(campaignType);
+
+        String domain = getResources().getString(R.string.virtual_api);
+
+        String url = domain + "api/Campaigns/"+id;
+        Request request = new Request.Builder().url(url).build();
+        final CountDownLatch countDownLatch = new CountDownLatch(1);
+        okHttpClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                e.printStackTrace();
+                Log.e("Get data API Error: ", e.getMessage());
+                countDownLatch.countDown();
+                campaign = null;
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+
+                String json = response.body().string();
+                campaign = jsonAdapter.fromJson(json);
+                countDownLatch.countDown();
+            }
+        });
+        try{
+            countDownLatch.await();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return campaign;
     }
 }
