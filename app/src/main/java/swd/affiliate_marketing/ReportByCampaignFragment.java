@@ -51,6 +51,12 @@ public class ReportByCampaignFragment extends Fragment {
 
 
     @Override
+    public void onStart() {
+        Log.d("a","start");
+        super.onStart();
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -73,19 +79,27 @@ public class ReportByCampaignFragment extends Fragment {
         Publisher publisher = ((GlobalVariable) getActivity().getApplication()).publisher;
         String url = domain + "api/Publishers/"+publisher.publisherID+"/Campaigns";
         Request request = new Request.Builder().url(url).build();
+        final CountDownLatch countDownLatch = new CountDownLatch(1);
         okHttpClient.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 e.printStackTrace();
                 Log.e("Get data API Error: ", e.getMessage());
+                countDownLatch.countDown();
             }
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 String json = response.body().string();
                 registrations = jsonAdapter.fromJson(json);
+                countDownLatch.countDown();
             }
         });
+        try{
+            countDownLatch.await();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     private void getTrackings(String code){

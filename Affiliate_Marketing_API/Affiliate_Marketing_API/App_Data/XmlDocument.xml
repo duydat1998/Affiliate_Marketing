@@ -564,6 +564,13 @@
             <param name="id"></param>
             <returns></returns>
         </member>
+        <member name="M:Affiliate_Marketing_API.Controllers.PromotionCodesController.GetTotalIncomeOfPromotionCode(System.String)">
+            <summary>
+            Get total amount earned based on the PromotionCode
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
         <member name="M:Affiliate_Marketing_API.Controllers.PromotionCodesController.PutPromotionCode(System.String,Affiliate_Marketing_API.Models.PromotionCode)">
             <summary>
             Update Promotion Code information

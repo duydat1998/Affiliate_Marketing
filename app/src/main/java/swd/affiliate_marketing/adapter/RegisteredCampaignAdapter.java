@@ -62,10 +62,10 @@ public class RegisteredCampaignAdapter extends RecyclerView.Adapter<RegisteredCa
 
         Picasso.with(context).load(campaign.banner).into(view.ivBanner);
         view.tvPromotionCode.setText("Promotion code: "+registration.promotionCode);
-        view.tvState.setText("Register date: "+registration.registerDate);
+        view.tvState.setText("Register date: "+registration.registerDate.substring(0,10));
         view.tvCampaignName.setText(campaign.campaignName);
         view.tvAdvertiserName.setText(campaign.advertiserID);
-        view.tvTime.setText("From " +campaign.startDate + " to " + campaign.endDate);
+        view.tvTime.setText("From " +campaign.startDate.substring(0,10) + " to " + campaign.endDate.substring(0,10));
         view.tvCampaignId.setText(campaign.campaignID);
 
         view.btnReport.setOnClickListener(new View.OnClickListener() {
