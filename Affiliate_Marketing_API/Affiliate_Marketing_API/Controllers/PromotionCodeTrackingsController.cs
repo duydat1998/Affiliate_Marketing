@@ -103,6 +103,8 @@ namespace Affiliate_Marketing_API.Controllers
                 }
 
             }
+            DateTime date = DateTime.Now;
+            promotionCodeTracking.timeOfUsing = date;
             db.PromotionCodeTrackings.Add(promotionCodeTracking);
             db.SaveChanges();
 
