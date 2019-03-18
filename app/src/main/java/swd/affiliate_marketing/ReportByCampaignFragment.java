@@ -173,7 +173,7 @@ public class ReportByCampaignFragment extends Fragment {
         TextView col5 = new TextView(getActivity());
         TextView col6 = new TextView(getActivity());
         TableRow row = new TableRow(getActivity());
-
+        row.setBackgroundResource(R.drawable.row_border);
         TableRow.LayoutParams lp = new TableRow.LayoutParams();
         lp.weight = 1; //column weight
         lp = new TableRow.LayoutParams(0, TableRow.LayoutParams.MATCH_PARENT, 0.1f);
@@ -224,6 +224,7 @@ public class ReportByCampaignFragment extends Fragment {
         TextView col5 = new TextView(getActivity());
         Button col6 = new Button(getActivity());
         TableRow row = new TableRow(getActivity());
+        row.setBackgroundResource(R.drawable.row_border);
 
         TableRow.LayoutParams lp = new TableRow.LayoutParams();
         lp.weight = 1; //column weight
@@ -290,6 +291,7 @@ public class ReportByCampaignFragment extends Fragment {
         TextView col1 = new TextView(getActivity());
         TableRow row = new TableRow(getActivity());
 
+        row.setBackgroundResource(R.drawable.row_border);
         TableRow.LayoutParams lp = new TableRow.LayoutParams();
         lp.weight = 1; //column weight
         lp = new TableRow.LayoutParams(0, TableRow.LayoutParams.MATCH_PARENT, 1f);
@@ -307,6 +309,7 @@ public class ReportByCampaignFragment extends Fragment {
         TextView col2 = new TextView(getActivity());
         TableRow row = new TableRow(getActivity());
 
+        row.setBackgroundResource(R.drawable.row_border);
         TableRow.LayoutParams lp = new TableRow.LayoutParams();
         lp.weight = 1; //column weight
         lp = new TableRow.LayoutParams(0, TableRow.LayoutParams.MATCH_PARENT, 0.7f);

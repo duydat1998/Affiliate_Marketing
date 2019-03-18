@@ -135,6 +135,7 @@ public class ReportByMonthFragment extends Fragment {
         TextView col2 = new TextView(getActivity());
         TextView col3 = new TextView(getActivity());
         TableRow row = new TableRow(getActivity());
+        row.setBackgroundResource(R.drawable.row_border);
 
         TableRow.LayoutParams lp = new TableRow.LayoutParams();
         lp.weight = 1; //column weight
@@ -167,6 +168,7 @@ public class ReportByMonthFragment extends Fragment {
     private void addEmptyRow(){
         TextView col1 = new TextView(getActivity());
         TableRow row = new TableRow(getActivity());
+        row.setBackgroundResource(R.drawable.row_border);
 
         TableRow.LayoutParams lp = new TableRow.LayoutParams();
         lp.weight = 1; //column weight

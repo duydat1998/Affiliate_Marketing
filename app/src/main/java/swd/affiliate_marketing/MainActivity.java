@@ -71,8 +71,6 @@ public class MainActivity extends AppCompatActivity {
             BottomNavigationView navigation = findViewById(R.id.navigation);
             navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         }
-
-
     }
 
 
@@ -118,27 +116,18 @@ public class MainActivity extends AppCompatActivity {
         return currentCampaignRegistration;
     }
 
-    public void clickToLogout(View view) {
-        SharedPreferences sharedPreferences = getSharedPreferences("swd.affiliate_marketing_preferences", MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("username", null);
-        editor.putString("password", null);
-        editor.commit();
-        Intent intent = new Intent(this, LoginActivity.class);
-        startActivity(intent);
-    }
 
     private void getCampaignFromMessage(final String campaignID) {
 
         OkHttpClient okHttpClient = new OkHttpClient();
         Moshi moshi = new Moshi.Builder().build();
 
-        Type campaignType = Types.newParameterizedType(List.class, Campaign.class);
-        final JsonAdapter<List<Campaign>> jsonAdapter = moshi.adapter(campaignType);
+        Type campaignType = Types.newParameterizedType(Campaign.class);
+        final JsonAdapter<Campaign> jsonAdapter = moshi.adapter(campaignType);
 
         String domain = getResources().getString(R.string.virtual_api);
 
-        String url = domain + "api/Campaigns";
+        String url = domain + "api/Campaigns/" + campaignID;
         Request request = new Request.Builder().url(url).build();
         okHttpClient.newCall(request).enqueue(new Callback() {
             @Override
@@ -150,12 +139,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 String json = response.body().string();
-                List<Campaign> campaigns = jsonAdapter.fromJson(json);
-                for (Campaign c : campaigns) {
-                    if (c.campaignID.equals(campaignID)) {
-                        MainActivity.this.openCampaignDetailFragment(c);
-                    }
-                }
+                Campaign campaign = jsonAdapter.fromJson(json);
+                openCampaignDetailFragment(campaign);
             }
         });
     }
