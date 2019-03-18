@@ -323,7 +323,7 @@ public class ReportByCampaignFragment extends Fragment {
         row.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
 
         col1.setText(in1);
-        col2.setText(in2);
+        col2.setText(in2 + " VND");
 
         row.addView(col1);
         row.addView(col2);
