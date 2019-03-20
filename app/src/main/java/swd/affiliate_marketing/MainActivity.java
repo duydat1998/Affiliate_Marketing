@@ -1,7 +1,5 @@
 package swd.affiliate_marketing;
 
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -9,7 +7,6 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.Moshi;
@@ -17,7 +14,6 @@ import com.squareup.moshi.Types;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
-import java.util.List;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -29,7 +25,6 @@ import swd.affiliate_marketing.model.CampaignRegistration;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Campaign msCampaign;
     private Campaign currentCampaign = null;
     private CampaignRegistration currentCampaignRegistration = null;
 
@@ -68,9 +63,9 @@ public class MainActivity extends AppCompatActivity {
             //loading the default fragment
             loadFragment(new CampaignFragment());
             currentCampaign = null;
-            BottomNavigationView navigation = findViewById(R.id.navigation);
-            navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         }
+        BottomNavigationView navigation = findViewById(R.id.navigation);
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 
 
