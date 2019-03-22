@@ -35,7 +35,7 @@ public class SplashScreenActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         FirebaseMessaging.getInstance().subscribeToTopic("promotionCodeTracking");
-        Log.d("Firebase messaging", "registered");
+        Log.d("Affiliate Marketing", "Firebase messaging: registered promotionCodeTracking message service");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);

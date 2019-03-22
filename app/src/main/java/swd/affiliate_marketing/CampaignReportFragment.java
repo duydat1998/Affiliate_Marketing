@@ -35,10 +35,6 @@ import swd.affiliate_marketing.model.Campaign;
 import swd.affiliate_marketing.model.CampaignRegistration;
 import swd.affiliate_marketing.model.PromotionCodeTracking;
 
-
-/**
- * A simple {@link Fragment} subclass.
- */
 public class CampaignReportFragment extends Fragment {
 
 

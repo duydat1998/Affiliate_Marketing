@@ -16,41 +16,42 @@ import swd.affiliate_marketing.MainActivity;
 import swd.affiliate_marketing.R;
 
 public class MessageService extends FirebaseMessagingService {
-
-
     public MessageService() {
 
     }
 
-
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
-        if(remoteMessage.getFrom().equals("promotionCodeTracking")){
+        Log.d("Affiliate Marketing", "Firebase message: received message from "+remoteMessage.getFrom());
+        String from = remoteMessage.getFrom();
+        Log.d("from", from);
+        if(remoteMessage.getFrom().contains("promotionCodeTracking")){
             // Check if message contains a data payload.
             super.onMessageReceived(remoteMessage);
             if (remoteMessage.getData().size() > 0) {
-                showNotification(remoteMessage.getData().get("promotionCode"), remoteMessage.getData().get("timeOfUsing"));
+                showPromotionCodeTrackingNotification(remoteMessage.getData().get("promotionCode"), remoteMessage.getData().get("timeOfUsing"));
             }
 
             // Check if message contains a notification payload.
         } else {
             if (remoteMessage.getData().size() > 0) {
 
-                String click_action = remoteMessage.getNotification().getClickAction();
-                Intent intent = new Intent(click_action);
-                intent.putExtra("campaignID", (remoteMessage.getData().get("ID")));
-                PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, intent,
-                        PendingIntent.FLAG_ONE_SHOT);
-                NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this);
-                notificationBuilder.setContentIntent(pendingIntent);
-                NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-                notificationManager.notify(0, notificationBuilder.build());
+                if(remoteMessage.getNotification() != null){
+                    String click_action = remoteMessage.getNotification().getClickAction();
+                    Intent intent = new Intent(click_action);
+                    intent.putExtra("campaignID", (remoteMessage.getData().get("ID")));
+                    PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, intent,
+                            PendingIntent.FLAG_ONE_SHOT);
+                    NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this);
+                    notificationBuilder.setContentIntent(pendingIntent);
+                    NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+                    notificationManager.notify(0, notificationBuilder.build());
 
 //            Intent intent = new Intent(this, MainActivity.class);
 //            intent.putExtra("campaignID", (remoteMessage.getData().get("ID")));
 //            startActivity(intent);
+                }
             }
-
         }
         if (remoteMessage.getNotification() != null) {
             Log.d("Message: ", "Message Notification Body: " + remoteMessage.getNotification().getBody());
@@ -58,7 +59,8 @@ public class MessageService extends FirebaseMessagingService {
     }
 
 
-    private void showNotification(String promotionCode, String time) {
+    private void showPromotionCodeTrackingNotification(String promotionCode, String time) {
+        String message = "Your promotion code: " + promotionCode+" is used\n"+"At " + time;
         Intent intent = new Intent(this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
@@ -66,10 +68,11 @@ public class MessageService extends FirebaseMessagingService {
 
         Uri defaultSoundUri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
-                .setContentTitle("Your promotion code " + promotionCode)
-                .setSmallIcon(R.mipmap.ic_launcher)
-                .setContentText("At " + time)
-                .setAutoCancel(false)
+                .setContentTitle("New promotion code tracking")
+                .setSmallIcon(R.drawable.digital_campaign)
+                .setStyle(new NotificationCompat.BigTextStyle().bigText(message))
+                .setContentText(message)
+                .setAutoCancel(true)
                 .setSound(defaultSoundUri)
                 .setContentIntent(pendingIntent);
 
