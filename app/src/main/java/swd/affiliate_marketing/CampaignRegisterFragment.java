@@ -63,7 +63,7 @@ public class CampaignRegisterFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 String text = tvCampaignContent.getText().toString();
-                String message = copyToClipboard("promotion code", text);
+                String message = copyToClipboard("campaign content", text);
                 Toast.makeText(getActivity(),message , Toast.LENGTH_SHORT).show();
             }
         });

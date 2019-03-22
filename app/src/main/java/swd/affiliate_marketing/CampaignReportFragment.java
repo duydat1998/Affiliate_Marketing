@@ -1,6 +1,7 @@
 package swd.affiliate_marketing;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -12,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.Moshi;
@@ -45,7 +47,7 @@ public class CampaignReportFragment extends Fragment {
 
     private TextView tvCampaignName, tvAdvertiser, tvCampaignId, tvCampaignDate, tvPercentComission, tvRegisterDate, tvPromotionCode;
     private ImageView ivBanner;
-    private Button btnDone;
+    private Button btnDone, btnCopyCode, btnCopyContent;
     private TableLayout tblCampaignReport;
 
     private List<PromotionCodeTracking> trackings;
@@ -72,6 +74,8 @@ public class CampaignReportFragment extends Fragment {
         tvRegisterDate = view.findViewById(R.id.tvRegisterDate);
         tvPromotionCode = view.findViewById(R.id.tvPromotionCode);
         btnDone = view.findViewById(R.id.btnDone);
+        btnCopyCode = view.findViewById(R.id.btnCopyCode);
+        btnCopyContent = view.findViewById(R.id.btnCopyContent);
         tblCampaignReport = view.findViewById(R.id.tblCampaignReport);
 
         initializeData();
@@ -87,11 +91,27 @@ public class CampaignReportFragment extends Fragment {
         tvCampaignDate.setText("From "+campaign.startDate+" to "+campaign.endDate);
         tvPercentComission.setText("Comission: " + campaign.percentComission +"%");
         tvRegisterDate.setText("Registered in: "+registration.registerDate);
-        tvPromotionCode.setText("Promotion code: "+ registration.promotionCode);
+        tvPromotionCode.setText(registration.promotionCode);
         btnDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ((MainActivity) getActivity()).loadFragment(new CampaignFragment());
+            }
+        });
+        btnCopyCode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String text = tvPromotionCode.getText().toString();
+                String message = copyToClipboard("promotion code", text);
+                Toast.makeText(getActivity(),message , Toast.LENGTH_SHORT).show();
+            }
+        });
+        btnCopyContent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String text = campaign.campaignContent;
+                String message = copyToClipboard("campaign content", text);
+                Toast.makeText(getActivity(),message , Toast.LENGTH_SHORT).show();
             }
         });
         getTrackings();
@@ -274,6 +294,27 @@ public class CampaignReportFragment extends Fragment {
 
         row.addView(col1);
         tblCampaignReport.addView(row);
+    }
+
+    private String copyToClipboard(String label,String text){
+        String message;
+        int sdk = android.os.Build.VERSION.SDK_INT;
+        try{
+            if(sdk < android.os.Build.VERSION_CODES.HONEYCOMB) {
+                android.text.ClipboardManager clipboard = (android.text.ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
+                clipboard.setText(text);
+                message = "Copied";
+            } else {
+                android.content.ClipboardManager clipboard = (android.content.ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
+                android.content.ClipData clip = android.content.ClipData.newPlainText(label,text);
+                clipboard.setPrimaryClip(clip);
+                message = "Copied";
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+            message = "Copy FAILED";
+        }
+        return message;
     }
 
 }
