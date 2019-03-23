@@ -147,6 +147,33 @@ namespace Affiliate_Marketing_API.Controllers
             return Ok(campaignRegistration);
         }
 
+        /// <summary>
+        /// Get the Campaign of the registration with promotion Code
+        /// </summary>
+        /// <param name="promotionCode"></param>
+        /// <returns></returns>
+        [Route("api/CampaignRegistrations/{promotionCode}/Campaign")]
+        [ResponseType(typeof(Campaign))]
+        public IHttpActionResult GetCampaignName(string promotionCode)
+        {
+            IQueryable<CampaignRegistration> campaignRegistrations = db.CampaignRegistrations.Where(c => c.promotionCode.Equals(promotionCode));
+            if(campaignRegistrations == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                CampaignRegistration campaignRegistration = campaignRegistrations.First();
+                Campaign campaign = db.Campaigns.Find(campaignRegistration.campaignID);
+                if(campaign != null)
+                {
+                    return Ok(campaign);
+                }
+            }
+            return NotFound();
+
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

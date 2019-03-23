@@ -71,6 +71,7 @@ namespace Affiliate_Marketing_API.Controllers
             return Ok(total);
         }
 
+        
         /// <summary>
         /// Update Promotion Code information
         /// </summary>

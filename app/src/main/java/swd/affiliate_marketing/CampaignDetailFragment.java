@@ -200,6 +200,7 @@ public class CampaignDetailFragment extends Fragment {
                     String json = response.body().string();
                     if(!json.isEmpty()){
                         final CampaignRegistration registration = jsonAdapter.fromJson(json);
+                        backgroundThreadShortToast(context, "Register SUCCESSFULLY");
                         ((MainActivity) getActivity()).openCampaignRegisterFragment(registration);
                     } else {
                         backgroundThreadShortToast(context, "Register FAIL");

@@ -530,9 +530,16 @@
             <param name="id"></param>
             <returns></returns>
         </member>
+        <member name="M:Affiliate_Marketing_API.Controllers.CampaignRegistrationsController.GetCampaignName(System.String)">
+            <summary>
+            Get the Campaign of the registration with promotion Code
+            </summary>
+            <param name="promotionCode"></param>
+            <returns></returns>
+        </member>
         <member name="M:Affiliate_Marketing_API.Controllers.CampaignsController.GetCampaigns">
             <summary>
-            get all on-going Campaign
+            Get all on-going Campaign
             </summary>
             <returns></returns>
         </member>

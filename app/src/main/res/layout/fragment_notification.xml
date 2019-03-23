@@ -10,16 +10,23 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="10dp">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Notification"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="No notification"/>
-
+            android:id="@+id/tvNotifiEmpty"
+            android:layout_marginTop="10dp"/>
+        <ListView
+            android:id="@+id/lvNotification"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:transcriptMode="normal"></ListView>
     </LinearLayout>
 
 </FrameLayout>

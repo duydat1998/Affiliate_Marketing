@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.Moshi;
@@ -20,8 +21,10 @@ import okhttp3.Callback;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import swd.affiliate_marketing.adapter.NotificationAdapter;
 import swd.affiliate_marketing.model.Campaign;
 import swd.affiliate_marketing.model.CampaignRegistration;
+import swd.affiliate_marketing.model.Notification;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -48,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
                     return true;
             }
             return false;
+
         }
     };
 
@@ -57,6 +61,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         String campaignID =  getIntent().getStringExtra("campaignID");
+        Notification notification = (Notification) getIntent().getSerializableExtra("promotionCodeNotify");
+        if(notification != null){
+            NotificationAdapter adapter = new NotificationAdapter(this);
+            adapter.addNotification(notification);
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    loadFragment(new NotificationFragment());
+                }
+            });
+        }
         if (campaignID != null) {
             getCampaignFromMessage(campaignID);
         } else {
@@ -110,7 +125,6 @@ public class MainActivity extends AppCompatActivity {
     public CampaignRegistration getCurrentCampaignRegistration() {
         return currentCampaignRegistration;
     }
-
 
     private void getCampaignFromMessage(final String campaignID) {
 

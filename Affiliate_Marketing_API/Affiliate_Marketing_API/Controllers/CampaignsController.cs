@@ -17,7 +17,7 @@ namespace Affiliate_Marketing_API.Controllers
         private AffiliateMarketingDBEntities db = new AffiliateMarketingDBEntities();
 
         /// <summary>
-        /// get all on-going Campaign
+        /// Get all on-going Campaign
         /// </summary>
         /// <returns></returns>
         // GET: api/Campaigns
