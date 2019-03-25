@@ -79,39 +79,39 @@ namespace Affiliate_Marketing_API.Controllers
         /// <param name="promotionCode"></param>
         /// <returns></returns>
         // PUT: api/PromotionCodes/5
-        [ResponseType(typeof(void))]
-        public IHttpActionResult PutPromotionCode(string id, PromotionCode promotionCode)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //[ResponseType(typeof(void))]
+        //public IHttpActionResult PutPromotionCode(string id, PromotionCode promotionCode)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-            if (id != promotionCode.promotionCode1)
-            {
-                return BadRequest();
-            }
+        //    if (id != promotionCode.promotionCode1)
+        //    {
+        //        return BadRequest();
+        //    }
 
-            db.Entry(promotionCode).State = EntityState.Modified;
+        //    db.Entry(promotionCode).State = EntityState.Modified;
 
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!PromotionCodeExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+        //    try
+        //    {
+        //        db.SaveChanges();
+        //    }
+        //    catch (DbUpdateConcurrencyException)
+        //    {
+        //        if (!PromotionCodeExists(id))
+        //        {
+        //            return NotFound();
+        //        }
+        //        else
+        //        {
+        //            throw;
+        //        }
+        //    }
 
-            return StatusCode(HttpStatusCode.NoContent);
-        }
+        //    return StatusCode(HttpStatusCode.NoContent);
+        //}
 
         /// <summary>
         /// Create new Promotion Code

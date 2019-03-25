@@ -41,7 +41,9 @@ public class SplashScreenActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         String token = FirebaseInstanceId.getInstance().getToken();
-        Log.i("MainActivity", "Token: " + token);
+        if(token != null){
+            Log.d("Affiliate Marketing", "Token: " + token);
+        }
 
         new Handler().postDelayed(new Runnable() {
             public void run() {

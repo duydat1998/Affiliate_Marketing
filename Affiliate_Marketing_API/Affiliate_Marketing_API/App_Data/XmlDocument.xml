@@ -578,14 +578,6 @@
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:Affiliate_Marketing_API.Controllers.PromotionCodesController.PutPromotionCode(System.String,Affiliate_Marketing_API.Models.PromotionCode)">
-            <summary>
-            Update Promotion Code information
-            </summary>
-            <param name="id"></param>
-            <param name="promotionCode"></param>
-            <returns></returns>
-        </member>
         <member name="M:Affiliate_Marketing_API.Controllers.PromotionCodesController.PostPromotionCode(Affiliate_Marketing_API.Models.PromotionCode)">
             <summary>
             Create new Promotion Code

@@ -70,7 +70,7 @@ public class CampaignDetailFragment extends Fragment {
             tvAdvertiser.setText("Advertiser: "+currentCampaign.advertiserName);
 
             tvCampaignDate = view.findViewById(R.id.tvCampaignDate);
-            tvCampaignDate.setText("From "+currentCampaign.startDate + " to "+currentCampaign.endDate);
+            tvCampaignDate.setText("From "+currentCampaign.startDate.substring(0,10) + " to "+currentCampaign.endDate.substring(0,10));
 
             tvPercentComission = view.findViewById(R.id.tvPercentComission);
             tvPercentComission.setText("Comission: "+currentCampaign.percentComission+" % for each bill");
@@ -222,6 +222,7 @@ public class CampaignDetailFragment extends Fragment {
             @Override
             public void onFailure(Call call, IOException e) {
                 e.printStackTrace();
+                backgroundThreadShortToast(context, "Network Error");
             }
 
             @Override

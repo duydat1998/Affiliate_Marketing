@@ -177,3 +177,5 @@ D:\Studying\A_SPRING2019-SWD319\Affiliate_Marketing\Affiliate_Marketing_API\Affi
 D:\Studying\A_SPRING2019-SWD319\Affiliate_Marketing\Affiliate_Marketing_API\Affiliate_Marketing_API\obj\Debug\Affiliate_Marketing_API.dll
 D:\Studying\A_SPRING2019-SWD319\Affiliate_Marketing\Affiliate_Marketing_API\Affiliate_Marketing_API\obj\Debug\Affiliate_Marketing_API.pdb
 D:\Studying\A_SPRING2019-SWD319\Affiliate_Marketing\Affiliate_Marketing_API\Affiliate_Marketing_API\bin\XmlDocument.xml
+D:\Studying\A_SPRING2019-SWD319\Affiliate_Marketing\Affiliate_Marketing_API\Affiliate_Marketing_API\bin\Swashbuckle.Core.dll
+D:\Studying\A_SPRING2019-SWD319\Affiliate_Marketing\Affiliate_Marketing_API\Affiliate_Marketing_API\bin\WebActivatorEx.dll

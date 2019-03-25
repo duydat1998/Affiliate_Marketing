@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.Moshi;
@@ -65,6 +66,7 @@ public class CampaignFragment extends Fragment {
             public void onFailure(Call call, IOException e) {
                 e.printStackTrace();
                 Log.e("Get data API Error: ", e.getMessage());
+                Toast.makeText(getContext(), "Network Error", Toast.LENGTH_SHORT).show();
             }
 
             @Override
